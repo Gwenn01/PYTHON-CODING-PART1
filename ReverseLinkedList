@@ -1,0 +1,49 @@
+class LinkedList:
+    class Node:
+        def __init__(self, val=0, next=None):
+            self.val = val
+            self.next = next
+    # root
+    def __init__(self):
+        self.root = None
+    def add(self, val):
+         node = self.Node(val)
+         if self.root is None:
+             self.root = node
+             return
+         temp = self.root
+         while temp.next is not None:
+             temp = temp.next
+         temp.next = node
+    def display(self):
+        temp = self.root
+        while temp is not None:
+             print(f"{temp.val} -> ", end="")
+             temp = temp.next
+    # reversing linked list
+    def reverse_linkedlist(self):
+        temp = self.root
+        prev = None
+        newNode = None      
+        while temp is not None:
+            newNode = temp.next
+            temp.next = prev
+            prev = temp
+            temp = newNode
+        return prev     
+    
+    def main(self):
+        self.root = self.reverse_linkedlist()
+        
+             
+list = LinkedList()     
+list.add(5)
+list.add(6)
+list.add(8)
+list.add(10)
+list.add(13)
+list.display()
+list.main()
+print()
+print("Reverse Linked List: ")
+list.display()
